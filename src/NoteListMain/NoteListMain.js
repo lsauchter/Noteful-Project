@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import NoteContext from '../NoteContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
+import { getNotesForFolder } from '../notes-helpers'
 import CircleButton from '../CircleButton/CircleButton'
 import './NoteListMain.css'
 
@@ -10,11 +11,14 @@ export default class NoteListMain extends React.Component {
   static contextType = NoteContext
 
   render() {
-    const { notes } = this.context
+    const { folderId } = this.props.match.params
+    const { notes=[] } = this.context
+    const notesForFolder = getNotesForFolder(notes, folderId)
+
   return (
     <section className='NoteListMain'>
       <ul>
-        {notes.map(note =>
+        {notesForFolder.map(note =>
           <li key={note.id}>
             <Note
               id={note.id}
@@ -42,4 +46,7 @@ export default class NoteListMain extends React.Component {
 
 NoteListMain.defaultProps = {
   notes: [],
+  match: {
+    params: {}
+  }
 }

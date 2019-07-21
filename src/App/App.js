@@ -5,7 +5,6 @@ import NoteListNav from '../NoteListNav/NoteListNav';
 import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
-import dummyStore from '../dummy-store';
 import NoteContext from '../NoteContext';
 import './App.css';
 
@@ -16,8 +15,30 @@ class App extends Component {
     };
 
     componentDidMount() {
-        // fake date loading from API call
-        setTimeout(() => this.setState(dummyStore), 600);
+        const noteURL = 'http://localhost:9090/notes';
+        const folderURL = 'http://localhost:9090/folders';
+        Promise.all([fetch(noteURL), fetch(folderURL)])
+        .then(([noteRes, folderRes]) => {
+            if (!noteRes.ok) {
+                return noteRes.json().then(error => Promise.reject(error))
+            }
+            if (!folderRes.ok) {
+                return folderRes.json().then(error => Promise.reject(error))
+            }
+            return Promise.all([noteRes.json(), folderRes.json()])
+        })
+        .then(([notes, folders]) => {
+            this.setState({notes, folders})
+        })
+        .catch(error => console.error(error))
+    };
+
+    deleteNote = noteID  => {
+        console.log(noteID);
+        this.setState({
+            notes: this.state.notes.filter(note => note.id !== noteID)
+        })
+        console.log(this.state.notes);
     }
 
     renderNavRoutes() {
@@ -63,7 +84,8 @@ class App extends Component {
     render() {
         const contextValue = {
             notes: this.state.notes,
-            folders: this.state.folders
+            folders: this.state.folders,
+            deleteNote: this.deleteNote,
         }
 
         return (
