@@ -7,19 +7,19 @@
     position: relative;
 }
 
+label {
+    margin-left: 5px;
+}
+
 input {
     margin-left: 2px;
     background-color: #cacaca;
     border-color: #cacaca;
 }
 
-.folderButtons {
-    text-align: center;
-}
-
 .folderButton__add {
     background-color: #cacaca;
-    margin-top: 5px;
+    margin: 5px 0 0 5px;
 }
 
 .folderButton__add:hover {
@@ -37,7 +37,9 @@ input {
     float: right;
     font-size: 12px;
     position: relative;
-    top: -44px;
+    top: -71px;
     transform-origin: right bottom;
     transform: rotate(-90deg);
+    padding-left: 20px;
+    padding-right: 20px;
   }
