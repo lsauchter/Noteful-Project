@@ -17,3 +17,14 @@
   background-color: #29862e;
   color: white;
 }
+
+.deleted {
+  color: #cacaca;
+  background-color: #010d1e;
+  width: 95%;
+  padding: 10px;
+  margin-left: 10px;
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+}
