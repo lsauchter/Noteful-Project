@@ -60,28 +60,24 @@ export default class AddFolder extends React.Component {
     render() {
         const { error } = this.state
         return (
-            <div>
+            <>
                 <form onSubmit={this.handleSubmit} className='folderForm'>
                     <label htmlFor='folderName'>
                         Folder Name:
                     </label>
-                    <span className='error'>
+                    <p className='error' role='alert'>
                         {this.state.name.touched && this.validateName()}
-                    </span>
+                    </p>
                     <input
                         type='text'
                         name='folderName'
                         id='folderName'
                         placeholder='New Folder'
+                        aria-required='true'
+                        aria-describedby='error'
                         onChange={e => this.updateName(e.target.value)}
                     />
                     <div className="folderButtons">
-                    <button
-                        type='button'
-                        className='folderButton__cancel'
-                        onClick={this.handleClickCancel}>
-                        Cancel
-                    </button>
                     <button
                         type='submit'
                         className='folderButton__add'
@@ -90,12 +86,18 @@ export default class AddFolder extends React.Component {
                         }>
                         Add
                     </button>
+                    <button
+                        type='button'
+                        className='folderButton__cancel'
+                        onClick={this.handleClickCancel}>
+                        Cancel
+                    </button>
                     </div>
                 </form>
                 <div className='AddBookmark__error' role='alert'>
                     {error && <p>{error.message}</p>}
                 </div>
-            </div>
+            </>
         )
     }
 }

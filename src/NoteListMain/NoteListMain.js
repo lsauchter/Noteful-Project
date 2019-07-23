@@ -17,7 +17,7 @@ export default class NoteListMain extends React.Component {
   }
 
   deleteNote = (name) => {
-    this.setState({deleted: <p className="deleted">{name} deleted </p>});
+    this.setState({deleted: <p className="deleted" role='alert'>{name} deleted </p>});
     setTimeout(() => {this.setState({deleted: ''})}, 5000);
   }
 
@@ -44,7 +44,7 @@ export default class NoteListMain extends React.Component {
           </li>
         )}
       </ul>
-      <div className='NoteListMain__button-container'>
+      <div className='NoteListMain__button-container' aria-label='Add Note'>
         <CircleButton
           tag={Link}
           to='/add-note'

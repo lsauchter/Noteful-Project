@@ -91,19 +91,21 @@ export default class AddNote extends React.Component {
         const { error } = this.state;
 
         return (
-            <div>
+            <>
                 <form onSubmit={this.handleSubmit} className='noteForm'>
                     <label htmlFor='noteName'>
                         Note Name
                     </label>
-                    <span className='error'>
+                    <p className='name error' role='alert'>
                             {this.state.name.touched && this.validateName()}
-                    </span>
+                    </p>
                     <input
                         type='text'
                         name='noteName'
                         id='noteName'
                         placeholder='Unicorns'
+                        aria-required='true'
+                        aria-describedby='name error'
                         onChange={e => this.updateName(e.target.value)}
                     />
                     <label htmlFor='noteFolder'>
@@ -119,14 +121,16 @@ export default class AddNote extends React.Component {
                     <label htmlFor='noteContent'>
                         Content
                     </label>
-                    <span className='error'>
+                    <p className='content error' role='alert'>
                             {this.state.content.touched && this.validateContent()}
-                    </span>
+                    </p>
                     <input
                         type='text'
                         name='noteContent'
                         id='noteContent'
                         placeholder='Unicorns are magical creatures'
+                        aria-required='true'
+                        aria-describedby='content error'
                         onChange={e => this.updateContent(e.target.value)}
                     />
                     <div className="noteButtons">
@@ -150,7 +154,7 @@ export default class AddNote extends React.Component {
                 <div className='AddBookmark__error' role='alert'>
                     {error && <p>{error.message}</p>}
                 </div>
-            </div>
+            </>
         )
     }
 }

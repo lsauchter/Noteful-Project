@@ -29,7 +29,7 @@ export default class NoteListNav extends React.Component {
           </li>
         )}
       </ul>
-      <div className='NoteListNav__button-wrapper'>
+      <div className='NoteListNav__button-wrapper' aria-label='Add folder'>
         <CircleButton
           tag={Link}
           to='/add-folder'
