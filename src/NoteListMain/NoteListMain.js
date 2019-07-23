@@ -18,7 +18,11 @@ export default class NoteListMain extends React.Component {
 
   deleteNote = (name) => {
     this.setState({deleted: <p className="deleted" role='alert'>{name} deleted </p>});
-    setTimeout(() => {this.setState({deleted: ''})}, 5000);
+    this.timer = setTimeout(() => {this.setState({deleted: ''})}, 5000);
+  }
+
+  componentWillUnmount = () => {
+    clearTimeout(this.timer);
   }
 
   render() {
