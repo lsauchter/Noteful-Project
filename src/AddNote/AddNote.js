@@ -3,11 +3,22 @@ import NoteContext from '../NoteContext';
 import './AddNote.css';
 
 export default class AddNote extends React.Component {
-    static contextType = NoteContext;
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: {
+                value: '',
+                touched: false
+            },
+            content: {
+                value: '',
+                touched: false
+            },
+            error: null
+        }
+    }
 
-    state = {
-        error: null
-    };
+    static contextType = NoteContext;
 
     handleSubmit = e => {
         e.preventDefault();
@@ -43,6 +54,28 @@ export default class AddNote extends React.Component {
         })
     }
 
+    updateName(name) {
+        this.setState({name: {value: name, touched: true}})
+    }
+
+    updateContent(content) {
+        this.setState({content: {value: content, touched: true}})
+    }
+
+    validateName() {
+        const name = this.state.name.value.trim();
+        if (name.length === 0) {
+            return 'Name is required';
+        }
+    }
+
+    validateContent() {
+        const content = this.state.content.value.trim();
+        if (content.length === 0) {
+            return 'Content is required'
+        }
+    }
+
     handleClickCancel = () => {
         this.props.history.push('/');
     };
@@ -64,12 +97,15 @@ export default class AddNote extends React.Component {
                     <label htmlFor='noteName'>
                         Note Name
                     </label>
+                    <span className='error'>
+                            {this.state.name.touched && this.validateName()}
+                    </span>
                     <input
                         type='text'
                         name='noteName'
                         id='noteName'
                         placeholder='Unicorns'
-                        required
+                        onChange={e => this.updateName(e.target.value)}
                     />
                     <label htmlFor='noteFolder'>
                         Folder
@@ -84,17 +120,24 @@ export default class AddNote extends React.Component {
                     <label htmlFor='noteContent'>
                         Content
                     </label>
+                    <span className='error'>
+                            {this.state.content.touched && this.validateContent()}
+                    </span>
                     <input
                         type='text'
                         name='noteContent'
                         id='noteContent'
                         placeholder='Unicorns are magical creatures'
-                        required
+                        onChange={e => this.updateContent(e.target.value)}
                     />
                     <div className="noteButtons">
                     <button
                         type='submit'
-                        className='noteButton__add'>
+                        className='noteButton__add'
+                        disabled={
+                            this.validateName() ||
+                            this.validateContent()
+                        }>
                         Add
                     </button>
                     <button

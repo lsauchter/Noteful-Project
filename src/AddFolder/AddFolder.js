@@ -3,11 +3,18 @@ import './AddFolder.css';
 import NoteContext from '../NoteContext';
 
 export default class AddFolder extends React.Component {
-    static contextType = NoteContext;
+    constructor(props) {
+        super(props);
 
-    state = {
-        error: null
-    };
+        this.state = {
+            name: {
+                value: '',
+                touched: false
+            },
+            error: null
+        }
+    }
+    static contextType = NoteContext;
 
     handleSubmit = e => {
         e.preventDefault();
@@ -39,6 +46,17 @@ export default class AddFolder extends React.Component {
         this.props.history.push('/');
     };
 
+    updateName(name) {
+        this.setState({name: {value: name, touched: true}})
+    }
+
+    validateName() {
+        const name = this.state.name.value.trim();
+        if (name.length === 0) {
+            return 'Name is required';
+        }
+    }
+
     render() {
         const { error } = this.state
         return (
@@ -47,12 +65,15 @@ export default class AddFolder extends React.Component {
                     <label htmlFor='folderName'>
                         Folder Name:
                     </label>
+                    <span className='error'>
+                        {this.state.name.touched && this.validateName()}
+                    </span>
                     <input
                         type='text'
                         name='folderName'
                         id='folderName'
                         placeholder='New Folder'
-                        required
+                        onChange={e => this.updateName(e.target.value)}
                     />
                     <div className="folderButtons">
                     <button
@@ -63,7 +84,10 @@ export default class AddFolder extends React.Component {
                     </button>
                     <button
                         type='submit'
-                        className='folderButton__add'>
+                        className='folderButton__add'
+                        disabled={
+                            this.validateName()
+                        }>
                         Add
                     </button>
                     </div>

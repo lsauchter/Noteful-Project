@@ -51,4 +51,10 @@ select {
     background-color: #cacaca;
     border: 0;
     font-size: 12px;
-  }
+}
+
+.error {
+    color: red;
+    display: block;
+    margin: 5px;
+}
