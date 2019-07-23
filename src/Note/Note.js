@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import NoteContext from '../NoteContext'
+import PropTypes from 'prop-types'
 import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Note.css'
@@ -53,3 +54,10 @@ export default class Note extends React.Component {
     </div>
   )
 }}
+
+Note.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  modified: PropTypes.string.isRequired,
+  deleteNote: PropTypes.func
+}

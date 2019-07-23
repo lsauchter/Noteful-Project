@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import NoteContext from '../NoteContext'
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
 import { getNotesForFolder } from '../notes-helpers'
@@ -45,8 +46,13 @@ export default class NoteListMain extends React.Component {
 }}
 
 NoteListMain.defaultProps = {
-  notes: [],
   match: {
     params: {}
   }
+}
+
+NoteListMain.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object.isRequired
+  })
 }

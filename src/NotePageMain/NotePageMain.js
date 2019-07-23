@@ -1,5 +1,6 @@
 import React from 'react'
 import NoteContext from '../NoteContext'
+import PropTypes from 'prop-types'
 import Note from '../Note/Note'
 import { findNote } from '../notes-helpers'
 import './NotePageMain.css'
@@ -37,4 +38,10 @@ NotePageMain.defaultProps = {
   match: {
     params: {}
   }
+}
+
+NotePageMain.propTypes = {
+  match: PropTypes.shape({
+      params: PropTypes.object.isRequired
+  })
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import NoteContext from '../NoteContext';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import { findNote, findFolder } from '../notes-helpers'
@@ -41,4 +42,13 @@ NotePageNav.defaultProps = {
   match: {
     params: {}
   }
+}
+
+NotePageNav.propTypes = {
+  history: PropTypes.shape({
+      goBack: PropTypes.func.isRequired
+  }),
+  match: PropTypes.shape({
+      params: PropTypes.object.isRequired
+  })
 }
