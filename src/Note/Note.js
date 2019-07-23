@@ -59,6 +59,6 @@ export default class Note extends React.Component {
 Note.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
-  modified: PropTypes.string,
+  modified: PropTypes.instanceOf(Date),
   deleteNote: PropTypes.func
 }
