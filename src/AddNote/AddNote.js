@@ -28,11 +28,11 @@ export default class AddNote extends React.Component {
         const note = {
             'name': noteName.value,
             'modified': isoDate,
-            'folderId': noteFolder.value,
+            'folder_id': noteFolder.value,
             'content': noteContent.value,
         }
         this.setState({error: null})
-        const url = 'http://localhost:9090/notes';
+        const url = 'http://localhost:8000/api/notes';
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(note),
@@ -125,7 +125,7 @@ export default class AddNote extends React.Component {
                             {this.state.content.touched && this.validateContent()}
                     </p>
                     <input
-                        type='text'
+                        type='textarea'
                         name='noteContent'
                         id='noteContent'
                         placeholder='Unicorns are magical creatures'

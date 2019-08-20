@@ -12,13 +12,13 @@ export default class Note extends React.Component {
   handleDeleteNote = e => {
     e.preventDefault();
     const noteID = this.props.id;
-    const url = 'http://localhost:9090/notes/' + noteID;
+    const url = 'http://localhost:8000/api/notes/' + noteID;
     fetch(url, { method: 'DELETE', })
     .then(response => {
         if (!response.ok) {
             return response.json().then(error => {throw error})
         }
-        return response.json()
+        return 
     })
     .then(() => {
       this.context.deleteNote(noteID);

@@ -17,8 +17,8 @@ class App extends Component {
     };
 
     componentDidMount() {
-        const noteURL = 'http://localhost:9090/notes';
-        const folderURL = 'http://localhost:9090/folders';
+        const noteURL = 'http://localhost:8000/api/notes';
+        const folderURL = 'http://localhost:8000/api/folders';
         Promise.all([fetch(noteURL), fetch(folderURL)])
         .then(([noteRes, folderRes]) => {
             if (!noteRes.ok) {
