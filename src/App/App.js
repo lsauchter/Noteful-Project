@@ -17,8 +17,8 @@ class App extends Component {
     };
 
     componentDidMount() {
-        const noteURL = 'http://localhost:8000/api/notes';
-        const folderURL = 'http://localhost:8000/api/folders';
+        const noteURL = 'https://warm-ridge-59267.herokuapp.com/api/notes';
+        const folderURL = 'https://warm-ridge-59267.herokuapp.com/api/folders';
         Promise.all([fetch(noteURL), fetch(folderURL)])
         .then(([noteRes, folderRes]) => {
             if (!noteRes.ok) {

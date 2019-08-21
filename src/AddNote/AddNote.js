@@ -32,7 +32,7 @@ export default class AddNote extends React.Component {
             'content': noteContent.value,
         }
         this.setState({error: null})
-        const url = 'http://localhost:8000/api/notes';
+        const url = 'https://warm-ridge-59267.herokuapp.com/api/notes';
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(note),
