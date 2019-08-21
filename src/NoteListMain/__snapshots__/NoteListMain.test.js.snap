@@ -6,6 +6,7 @@ exports[`NoteListMain component renders a .NoteListMain by default 1`] = `
 >
   <ul />
   <div
+    aria-label="Add Note"
     className="NoteListMain__button-container"
   >
     <NavCircleButton

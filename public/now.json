@@ -1,7 +1,7 @@
 {
     "version": 2,
-    "alias": "noteful",
-    "name": "noteful",
+    "alias": "lsauchter-noteful",
+    "name": "lsauchter-noteful",
     "routes": [
         {
           "src": "^/static/(.*)",

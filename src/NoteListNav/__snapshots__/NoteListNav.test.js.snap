@@ -8,6 +8,7 @@ exports[`NoteListNav component renders a .NoteListNav by default 1`] = `
     className="NoteListNav__list"
   />
   <div
+    aria-label="Add folder"
     className="NoteListNav__button-wrapper"
   >
     <NavCircleButton
