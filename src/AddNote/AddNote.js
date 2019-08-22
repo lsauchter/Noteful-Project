@@ -124,8 +124,7 @@ export default class AddNote extends React.Component {
                     <p className='content error' role='alert'>
                             {this.state.content.touched && this.validateContent()}
                     </p>
-                    <input
-                        type='textarea'
+                    <textarea
                         name='noteContent'
                         id='noteContent'
                         placeholder='Unicorns are magical creatures'
