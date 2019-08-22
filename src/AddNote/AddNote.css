@@ -58,7 +58,7 @@ textarea {
     height: 100px
 }
 
-.error {
+.error, .AddBookmark__error {
     color: red;
     display: block;
     margin: 5px;
