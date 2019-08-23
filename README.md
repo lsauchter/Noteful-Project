@@ -10,4 +10,4 @@ This app uses React for client side code, Node.js and Express for the API, and P
 ## Live Page
 [https://lsauchter-noteful.now.sh](https://lsauchter-noteful.now.sh)
 
-<img src="public/noteful">
+<img src="public/noteful.png">
